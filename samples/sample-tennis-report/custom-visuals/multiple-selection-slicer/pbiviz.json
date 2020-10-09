@@ -1,0 +1,25 @@
+{
+    "visual": {
+    "name": "Multiple Selection Slicer by SOUTHWORKS",
+    "displayName": "Multiple Selection Slicer by SOUTHWORKS",
+    "guid": "MultipleSelectionSlicer",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "A multiple selection slicer",
+    "supportUrl": "http://southworks.com",
+    "gitHubUrl": ""
+    },
+    "apiVersion": "2.6.0",
+    "author": {
+        "name": "SOUTHWORKS",
+        "email": "amur@southworks.com"
+    },
+    "assets": {
+        "icon": "assets/icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": []
+}

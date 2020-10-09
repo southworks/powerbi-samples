@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "author": {"name":"SOUTHWORKS","email":"amur@southworks.com"},
+    "resources": [
+        {
+            "resourceId": "rId0",
+            "sourceType": 5,
+            "file": "resources/ComparisonChart.pbiviz.json"
+        }
+    ],
+    "visual": {"name":"Comparison Chart by SOUTHWORKS","displayName":"Comparison Chart by SOUTHWORKS","guid":"ComparisonChart","visualClassName":"Visual","version":"1.0.0","description":"A chart visual to compare different values among 2 items","supportUrl":"http://southworks.com","gitHubUrl":""},
+    "metadata": {
+        "pbivizjson": {
+            "resourceId": "rId0"
+        }
+    }  
+}
