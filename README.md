@@ -23,17 +23,7 @@ To use the samples, clone this GitHub repository using Git.
 ## Samples
 | Sample | Description | Features Shown |
 | - | - | - |
-|[Sample Tennis Report](samples/sample-tennis/report) | Sample Tennis Report using ATP | Data Modelling, Customs Visuals, Data Sources using scripts
-
-## Table of Contents
-
-- [Goals](#goals)
-- [Project Diagrams](#project-diagrams)
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [Thank You](#thank-you)
-- [Further reading](#further-reading)
-- [License](#license)
+|[Sample Tennis Report](samples/sample-tennis/report) | Sample Tennis Report | Data Modelling, Data Visualization, Customs Visuals, Data generation
 
 ## Contributing
 
