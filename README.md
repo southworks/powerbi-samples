@@ -1,8 +1,29 @@
-# SOUTHWORKS Open Source Template
+# Power BI Samples
+This repository conntains working samples that demonstrates the use of Power BI to build reports and the use of advanced features.
 
-The SOUTHWORKS Open Source Template is a starting point for new repositories to comply with open source guidelines that clearly describe the project and the contribution process.
+## Directory structure
+```bash
+└─── {root}
+   │── README.md
+   └── samples
+          |
+          └ sample-tennis-report
+            │─── custom-visuals
+            │─── report
+            │─── themes
+            └─── data-tools
+```
 
-Reuse all sections in this README.md as needed.
+## Getting the samples
+To use the samples, clone this GitHub repository using Git.
+```bash
+    git clone https://github.com/southworks/powerbi-samples.git
+    cd powerbi-samples
+```
+## Samples
+| Sample | Description | Features Shown |
+| - | - | - |
+|[Sample Tennis Report](samples/sample-tennis/report) | Sample Tennis Report using ATP | Data Modelling, Customs Visuals, Data Sources using scripts
 
 ## Table of Contents
 
@@ -14,32 +35,12 @@ Reuse all sections in this README.md as needed.
 - [Further reading](#further-reading)
 - [License](#license)
 
-## Goals
-
-It is a good idea to provide a mission statement for your project, describe what the project wants to accomplish so that as more people join your project everyone can work in alignment.
-
-## Project Diagrams
-
-Insert any Diagram describing the project. Use software like [diagrams.net](https://www.diagrams.net/) to create it.
-
-## Getting Started
-
-Detailed instructions on how to install, configure, and get the project running. Alternatively, link to a separate [Getting Started](GETTING_STARTED.md) document.
-
 ## Contributing
 
 Contributions are welcomed!
 
 - [Contribution guidelines](CONTRIBUTING.md)
 - [Code of conduct guidelines](CODE_OF_CONDUCT.md)
-
-## Thank You!
-
-Acknowledgement for the dependencies used in the project.
-
-## Further reading
-
-Link to useful external documentation.
 
 ## License
 
