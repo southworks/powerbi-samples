@@ -6,4 +6,4 @@ This custom visual was created to enhance the user experience when selecting pla
  - The user won't be able to select more elements than the maximum defined (default: 2)
 
 ## Development setup
-To update or debug the custom visual, refer to the [custom visuals documentation](..//README.md) and follow instructions to set up the development environment.
+To update or debug the custom visual, refer to the [custom visuals documentation](../README.md) and follow instructions to set up the development environment.
