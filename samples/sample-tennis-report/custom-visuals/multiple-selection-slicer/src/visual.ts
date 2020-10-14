@@ -40,6 +40,7 @@ import VisualUpdateType = powerbi.VisualUpdateType;
 import * as models from 'powerbi-models';
 
 import { VisualSettings } from "./settings";
+import { extractFilterColumnTarget } from "powerbi-visuals-utils-interactivityutils/lib/interactivityFilterService";
 export class Visual implements IVisual {
     private target: HTMLElement;
     private settings: VisualSettings;
@@ -85,10 +86,7 @@ export class Visual implements IVisual {
         let values = category.values;
 
         // Initialize the filters
-        let filterTarget: models.IFilterColumnTarget = {
-            table: category.source.queryName.substr(0, category.source.queryName.indexOf('.')),
-            column: category.source.displayName
-        };
+        let filterTarget: models.IFilterColumnTarget = extractFilterColumnTarget(category);
 
         // If the visual is refreshed/restarted with filters applied, create the elements
         options.jsonFilters.forEach(function(obj) {
