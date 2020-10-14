@@ -23,7 +23,7 @@ To use the samples, clone this GitHub repository using Git.
 ## Samples
 | Sample | Description | Features Shown |
 | - | - | - |
-|[Sample Tennis Report](samples/sample-tennis/report) | Sample Tennis Report | Data Modelling, Data Visualization, Customs Visuals, Data generation
+|[sample-tennis-report](samples/sample-tennis-report) | Sample Tennis Report | Data Modelling, Data Visualization, Customs Visuals, Data generation
 
 ## Contributing
 
