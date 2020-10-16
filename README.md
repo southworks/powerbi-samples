@@ -8,10 +8,6 @@ This repository conntains working samples that demonstrates the use of Power BI 
    └── samples
           |
           └ sample-tennis-report
-            │─── custom-visuals
-            │─── report
-            │─── themes
-            └─── data-tools
 ```
 
 ## Getting the samples
