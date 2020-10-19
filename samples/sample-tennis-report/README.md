@@ -28,7 +28,7 @@ The repository contains the assets and tools used to create the Power BI report.
 Each subfolder (custom-visuals, tools, report, etc.) contains its own README file with additional details including setup instructions and considerations.
 
 ## Power BI report
-To get started, go to the  follow the instructions in the [report documentation](report) to configure and visualize the report.
+To get started, follow the instructions in the [report documentation](report) to configure and visualize the report.
 
 ## Custom visuals
 A set of custom visuals were created to extend the out-of-the-box visualization features provided by Power BI:
