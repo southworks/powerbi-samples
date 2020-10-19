@@ -1,4 +1,4 @@
-# Power BI Report
+# Power BI Tennis Report
 
 ## Configuration
 Follow these steps to configure and visualize the report using Power BI Desktop:
