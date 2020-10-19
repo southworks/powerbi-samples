@@ -1,0 +1,93 @@
+div.search-container {
+  width: auto;
+  height: 100px;
+  position: relative;
+
+  input.search-input {
+    border: 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    width: 100%;
+    font-size: 14px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  ul.selected-list {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 4px;
+
+    li {
+      margin: 0px;
+      padding: 3px 5px 3px 5px;
+      display: block;
+      font-size: 1.2em;
+      border-radius: 2px;
+      position: relative;
+
+      span.cross {
+        position: absolute;
+        top: 3px;
+        right: 4px;
+        font-size: .9em;
+        display: table;
+        text-shadow: 1px 1px 0px #bcbcbc;
+        padding-left: 5px;
+        padding-right: 4px;
+        padding-top: 0px;
+        padding-bottom: 2px;
+        color: #ffffff;
+        box-shadow: 1px 1px 1px #b7b7b7;
+        border-radius: 2px;
+      }
+
+      span.cross:before {
+        content: "X";
+        font-weight: bold;
+      }
+    }
+
+    li.side-by-side {
+      float: left;
+      margin-right: 3px;
+      padding-right: 30px;
+      margin-bottom: 5px;
+    }
+
+    li.list {
+      margin-right: 0px;
+      width: 98.3%;
+      margin-top: 4px;
+      padding-right: 0.2%;
+    }
+  }
+
+  ul.options-list {
+    position: absolute;
+    margin: 0px;
+    top: 20px;
+    padding: 0px;
+    width: 99.8%;
+    z-index: 99;
+    background: #fff;
+    max-height: 100%;
+    overflow-y: hidden;
+    box-shadow: 1px 1px 3px #d9d9d9;
+    border-radius: 0px 0px 5px 5px;
+    display: table;
+
+    li {
+      display: block;
+      width: 98%;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      padding-left: 2%;
+    }
+  }
+}
+
+
+

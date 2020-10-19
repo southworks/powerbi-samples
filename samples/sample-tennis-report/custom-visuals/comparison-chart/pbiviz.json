@@ -1,0 +1,25 @@
+{
+	"visual": {
+		"name": "Comparison Chart by SOUTHWORKS",
+		"displayName": "Comparison Chart by SOUTHWORKS",
+		"guid": "ComparisonChart",
+		"visualClassName": "Visual",
+		"version": "1.0.0",
+		"description": "A chart visual to compare different values among 2 items",
+		"supportUrl": "http://southworks.com",
+		"gitHubUrl": ""
+	},
+	"apiVersion": "2.6.0",
+	"author": {
+        "name": "SOUTHWORKS",
+        "email": "amur@southworks.com"
+	},
+	"assets": {
+		"icon": "assets/icon.png"
+	},
+	"externalJS": null,
+	"style": "style/visual.less",
+	"capabilities": "capabilities.json",
+	"dependencies": null,
+	"stringResources": []
+}

@@ -1,0 +1,222 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Values",
+            "name": "values",
+            "kind": "Grouping"
+        }
+    ],
+    "objects": {
+        "general": {
+            "displayName": "General",
+            "properties": {
+                "filter": {
+                    "displayName": "filter",
+                    "type": {
+                        "filter": true
+                    }
+                }
+            }
+        },
+        "selections": {
+            "displayName": "Selections",
+            "properties": {
+                "minimumCount": {
+                    "displayName": "Minimum selection count",
+                    "description": "The minimum count of elements that need to be selected to apply the filter",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "maximumCount": {
+                    "displayName": "Maximum selection count",
+                    "description": "The maximum count of elements that can be selected",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "optionsListCount": {
+                    "displayName": "Options list count",
+                    "description": "The count of elements that will be shown simultaneously in the options list",
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "style": {
+            "displayName": "Visual Sytle",
+            "properties": {
+                "fontColor": {
+                    "displayName": "Font color",
+                    "description": "The color of the fonts within the visual",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Font size",
+                    "description": "The size of the fonts within the visual",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "selectedBackgroundColor": {
+                    "displayName": "Selection background color",
+                    "description": "The background color of the selection",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "selectedFontColor": {
+                    "displayName": "Selection font color",
+                    "description": "The font color of the selection",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "selectedShadowColor": {
+                    "displayName": "Selection shadow color",
+                    "description": "The shadow color of the selection",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "selectedStyle": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "side-by-side",
+                                "displayName": "Side-by-side"
+                            },
+                            {
+                                "value": "list",
+                                "displayName": "List"
+                            }
+                        ]
+                    },
+                    "displayName": "Selection Style",
+                    "description": "Defines if the selection list will be shown one below the other or side-by-side"
+                },
+                "selectedCrossBackgroundColor": {
+                    "displayName": "Cross background color",
+                    "description": "The background color of the selection cross",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "optionsBackgroundColor": {
+                    "displayName": "Options list background color",
+                    "description": "The background color of the options list",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "optionsStripeColor": {
+                    "displayName": "Options list stripe color",
+                    "description": "The stripe color of the options list",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "optionsFontColor": {
+                    "displayName": "Options list font color",
+                    "description": "The font color of the options list",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "searchInputBorderColor": {
+                    "displayName": "Search input border color",
+                    "description": "The search input border color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "searchBackgroundColor": {
+                    "displayName": "Search input background color",
+                    "description": "The search input background color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "searchFontColor": {
+                    "displayName": "Search input font color",
+                    "description": "The search input font color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "values": {
+                        "max": 1
+                    }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "values"
+                    },
+                    "dataReductionAlgorithm": {
+                        "top": {
+                            "count": 100000
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

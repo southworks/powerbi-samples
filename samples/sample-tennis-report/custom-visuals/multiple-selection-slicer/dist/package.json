@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "author": {"name":"SOUTHWORKS","email":"amur@southworks.com"},
+    "resources": [
+        {
+            "resourceId": "rId0",
+            "sourceType": 5,
+            "file": "resources/MultipleSelectionSlicer.pbiviz.json"
+        }
+    ],
+    "visual": {"name":"Multiple Selection Slicer by SOUTHWORKS","displayName":"Multiple Selection Slicer by SOUTHWORKS","guid":"MultipleSelectionSlicer","visualClassName":"Visual","version":"1.0.0","description":"A multiple selection slicer","supportUrl":"http://southworks.com","gitHubUrl":""},
+    "metadata": {
+        "pbivizjson": {
+            "resourceId": "rId0"
+        }
+    }  
+}

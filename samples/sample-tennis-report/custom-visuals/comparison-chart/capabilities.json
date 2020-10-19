@@ -1,0 +1,233 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Category",
+      "name": "Category",
+      "kind": "Grouping"
+    },
+    {
+      "displayName": "Measures",
+      "name": "Measure",
+      "kind": "Measure"
+    }
+  ],
+  "objects": {
+    "multipliers": {
+      "displayName": "Multipliers",
+      "properties": {
+        "multiplier": {
+          "displayName": "Multiplier",
+          "description": "Value to be used as a multiplier",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "styles": {
+      "displayName": "Visual Style",
+      "properties": {
+        "headerFontSize": {
+          "displayName": "Header font size",
+          "description": "The size of the font for the column headers",
+          "type": {
+              "formatting": {
+                  "fontSize": true
+              }
+          }
+        },
+        "secFontSize": {
+          "displayName": "Category font size",
+          "description": "The size of the font for category column",
+          "type": {
+              "formatting": {
+                  "fontSize": true
+              }
+          }
+        },
+        "secTitleFontSize": {
+          "displayName": "Metric font size",
+          "description": "The size of the fonts for the metric values",
+          "type": {
+              "formatting": {
+                  "fontSize": true
+              }
+          }
+        },
+        "categoryBackgroundColor": {
+          "displayName": "Category background color",
+          "description": "The background color of the category column",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "categorySeparatorColor": {
+          "displayName": "Separator color",
+          "description": "The separator color between categories",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "chartBackgroundColor": {
+          "displayName": "Chart background color",
+          "description": "The background color of the category column",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "leftBarColor": {
+          "displayName": "Left bar color",
+          "description": "The background color of the player 1 bars",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "rightBarColor": {
+          "displayName": "Right bar color",
+          "description": "The background color of the player 2 bars",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "categoryFontColor": {
+          "displayName": "Category font color",
+          "description": "The background color of the category column",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "headerFontColor": {
+          "displayName": "Header font color",
+          "description": "The background color of the category column",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "metricFontColor": {
+          "displayName": "Metric font color",
+          "description": "The background color of the category column",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "showMetricValue": {
+          "displayName": "Show metric value",
+          "description": "Indicate to show or not the metric value",
+          "type": { "bool": true }
+        },
+        "showHeader": {
+          "displayName": "Show header",
+          "description": "Indicate to show or not the table header",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "messages": {
+      "displayName": "Messages",
+      "properties": {
+        "notRequiredSelectedOptionsMessage": {
+          "displayName": "When slicer options are different than 2",
+          "description": "Message to display when the selected options is not equal to 2",
+          "type": { "text": true }
+        },
+        "noMeasureMessage": {
+          "displayName": "When no measure is selected",
+          "description": "Message to display when the measures section is empty",
+          "type": { "text": true }
+        },
+        "textSize": {
+          "displayName": "Text font size",
+          "description": "The font size of the message text",
+          "type": {
+              "formatting": {
+                  "fontSize": true
+              }
+          }
+        },
+        "messageFontColor": {
+          "displayName": "Text font color",
+          "description": "The font color of the message text",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "messageBackgroundColor": {
+          "displayName": "Background color",
+          "description": "The background color of the message container",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        },
+        "messageBorderColor": {
+          "displayName": "Border color",
+          "description": "The border color of the message container",
+          "type": {
+              "fill": {
+                  "solid": {
+                      "color": true
+                  }
+              }
+          }
+        }
+      }
+    }
+  },
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "Category": { "min": 1, "max": 1 }
+        }
+      ],
+      "table": {
+        "rows": {
+          "select": [
+            { "for": { "in": "Category" } },
+            { "for": { "in": "Measure" } }
+          ]
+        }
+      }
+    }
+  ],
+  "sorting": {
+    "default": {}
+  }
+}
