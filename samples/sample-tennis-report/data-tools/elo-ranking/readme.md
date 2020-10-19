@@ -25,4 +25,6 @@ To run this script follow these steps:
 
 The script will generate a separate file per rating type (one for the overall rating and one for each surface type) with the weekly Elo ratings. The files will be saved in the [dataset](../../report/dataset) folder.
 
+To update the report with the Elo rating data, click the **Refresh** button from Power BI Desktop.
+
 
