@@ -10,5 +10,5 @@ The visual properties of most of the visuals can be modified by defining a style
 - [theme.json](theme.json "theme.json:"). The JSON file containing the theme used in the tennis report.
 
 ## Useful links
-- [Official documentation](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-report-themes)
+- [Power BI themes documentation](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-report-themes)
 - [Snippets for assembling Power BI Themes](https://github.com/deldersveld/PowerBI-ThemeTemplates)
