@@ -54,9 +54,9 @@ export class stylesSettings {
     public secTitleFontSize: number = 14;
     public leftBarColor: string = "#33b2ff";
     public rightBarColor: string = "#016cad";
-    public chartBackgroundColor: string = "#ffffff";
-    public categoryBackgroundColor: string = "#ffffff";
-    public categorySeparatorColor: string = "#ffffff";
+    public chartBackgroundColor: string = "#ffffff00";
+    public categoryBackgroundColor: string = "#ffffff00";
+    public categorySeparatorColor: string = "#ffffff00";
     public headerFontColor: string = "#000000";
     public categoryFontColor: string = "#000000";
     public metricFontColor: string = "#000000";

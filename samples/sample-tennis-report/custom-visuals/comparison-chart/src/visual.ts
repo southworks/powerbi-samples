@@ -38,7 +38,9 @@ import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInst
 import VisualObjectInstance = powerbi.VisualObjectInstance;
 import DataView = powerbi.DataView;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
+import IColorPalette = powerbi.extensibility.IColorPalette;
 import * as d3 from "d3";
+
 
 export interface chartMetric {
     Player: string;
@@ -58,6 +60,7 @@ export class Visual implements IVisual {
     private settings: VisualSettings;
     private dataView: DataView;
     private tooltipServiceWrapper: ITooltipServiceWrapper;
+    private colorPalette: IColorPalette;
 
     constructor(options: VisualConstructorOptions) {
         this.target = document.createElement("div");
@@ -65,6 +68,7 @@ export class Visual implements IVisual {
         this.target.style.height = '100%';
         options.element.appendChild(this.target);
         this.tooltipServiceWrapper = createTooltipServiceWrapper(options.host.tooltipService, options.element);
+        this.colorPalette = options.host.colorPalette;
     }
 
     public update(options: VisualUpdateOptions) {
@@ -72,6 +76,9 @@ export class Visual implements IVisual {
         this.target.innerHTML = '';
         this.dataView = options.dataViews[0];
         this.settings = VisualSettings.parse<VisualSettings>(this.dataView);
+
+        // Rollback the automatic reset
+        this.colorPalette['colorIndex'] = Object.keys(this.colorPalette['colorPalette']).length;
 
         if (!options ||
             !options.dataViews ||
@@ -277,6 +284,10 @@ export class Visual implements IVisual {
 
         // Validates that two player were selected and at least one measure is added to the visual
         if (rows.length == 2) {
+            // Set bars color using the current theme
+            this.settings.styles.leftBarColor = this.dataView.metadata.objects?.styles.leftBarColor != undefined ? this.dataView.metadata.objects.styles.leftBarColor["solid"].color : this.colorPalette.getColor(player1[cols.findIndex(column => column.roles.Category)].toString()).value;
+            this.settings.styles.rightBarColor = this.dataView.metadata.objects?.styles.rightBarColor != undefined ? this.dataView.metadata.objects.styles.rightBarColor["solid"].color : this.colorPalette.getColor(player2[cols.findIndex(column => column.roles.Category)].toString()).value;
+
             if (cols.filter(column => !column.roles.Category).length > 0) {
                 // Create table element
                 let tableElem = document.createElement('table');
