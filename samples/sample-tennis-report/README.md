@@ -6,24 +6,23 @@ This sample consists of a Power BI report that consumes a tennis dataset (e.g. p
 The repository contains the assets and tools used to create the Power BI report.
 
 ```bash
-└─── {root}
+└─── sample-tennis-report
    │── README.md
-   │
-   └── dev
-          │─── custom-visuals
-          |         │─── comparison-chart
-          |         └─── multiple-selection-slicer
-          |
-          │─── report
-          |         │─── dataset (CSV files)
-          |         └─── atp-tour.pbix
-          |
-          │─── themes
-          |         │─── logo.png
-          |         └─── theme.json
-          |
-          └─── data-tools
-                    └─── elo-ranking
+   │   
+   │─── custom-visuals
+   |         │─── comparison-chart
+   |         └─── multiple-selection-slicer
+   |
+   │─── report
+   |         │─── dataset (CSV files)
+   |         └─── atp-tour.pbix
+   |
+   │─── themes
+   |         │─── logo.png
+   |         └─── theme.json
+   |
+   └─── data-tools
+              └─── elo-ranking
 ```
 
 Each subfolder (custom-visuals, tools, report, etc.) contains its own README file with additional details including setup instructions and considerations.
