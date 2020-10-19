@@ -16,12 +16,12 @@ The script will generate the weekly ELO ranking using matches between 1973 and 2
 
 ## Setup and execution
 To run this script follow these steps:
-1. If not done already, download the [ATP Tour Dataset](https://datahub.io/sports-data/atp-world-tour-tennis-data) and extract the content in the [dataset](../../report/dataset) folder.
-1. Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for Python 3.8
-1. Open the [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/)
-1. Create a Conda environment using the YAML file by running the following command: `conda env create -f environment.yml`
-1. Run `conda activate elo-ranking` to enable the environment that was just created
-1. Execute the script by running `python ranking.py`
+1. If not done already, follow the instructions of the [report documentation](../../report) to download the dataset files and configure the report
+2. Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for Python 3.8
+3. Open the [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/)
+4. Create a Conda environment using the YAML file by running the following command: `conda env create -f environment.yml`
+5. Run `conda activate elo-ranking` to enable the environment that was just created
+6. Execute the script by running `python ranking.py`
 
 The script will generate a separate file per rating type (one for the overall rating and one for each surface type) with the weekly Elo ratings. The files will be saved in the [dataset](../../report/dataset) folder.
 
