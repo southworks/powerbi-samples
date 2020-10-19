@@ -7,4 +7,4 @@ This custom visual was created to compare tennis stats between two different pla
 - There is a *Multipliers* section that can help to adjust the values to a proper visual scale.
 
 ## Development setup
-To update or debug the custom visual, refer to the [custom visuals documentation](../README.md) and follow instructions to set up the development environment.
+To update or debug the custom visual, refer to the [custom visuals documentation](../README.md) and follow the instructions to set up the development environment.
