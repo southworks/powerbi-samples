@@ -47,6 +47,7 @@ export class Visual implements IVisual {
     private selectedValues = [];
     private host: IVisualHost;
     private isEventUpdate: boolean = false;
+    private selectedValuesCount = 0;
 
     constructor(options: VisualConstructorOptions) {
         this.target = options.element;
@@ -145,17 +146,24 @@ export class Visual implements IVisual {
         // Applies the selected filters
         let fnUpdateFilters = function() {
             that.isEventUpdate = true;
-            if (that.selectedValues.length == 0) {
+
+            // Clear the filter in the case that there is not any selected options and was previously filtered (The count of selected values before was greater or equal de minimum)
+            if (that.selectedValues.length == 0 && that.selectedValuesCount >= that.settings.selections.minimumCount) {
                 that.host.applyJsonFilter(null, "general", "filter", powerbi.FilterAction.remove);
             } else {
                 if (that.selectedValues.length >= that.settings.selections.minimumCount) {
                     let filter = new models.BasicFilter(filterTarget, "In", that.selectedValues);
                     that.host.applyJsonFilter(filter, "general", "filter", powerbi.FilterAction.merge);
                 } else {
-                    that.host.applyJsonFilter(null, "general", "filter", powerbi.FilterAction.remove);
+                    // Clear the filter if there was a filter applied (The count of selected values before was greater or equal de minimum)
+                    if (that.selectedValuesCount >= that.settings.selections.minimumCount) {
+                        that.host.applyJsonFilter(null, "general", "filter", powerbi.FilterAction.remove);
+                    }
                 }
                 that.isEventUpdate = false;
             }
+            // Save the selections count
+            that.selectedValuesCount = that.selectedValues.length;
         }
 
         // Create the floating options list
