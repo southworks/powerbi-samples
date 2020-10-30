@@ -19,6 +19,9 @@ At the moment, these are the available custom visuals:
 │    │    │─── settings.ts (custom visual settings classes)
 │    │    └─── visual.ts (custom visual source code)
 │    │
+│    │── style
+│    │    └─── visual.less (custom visual styles)
+│    │
 │    │── capabilities.json (defines the settings and capabilities of the custom visual)
 │    │── packages.json
 │    └── pbiviz.json (defines the metadata of the custom visual)
