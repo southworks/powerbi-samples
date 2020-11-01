@@ -1,0 +1,44 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Static title columns",
+      "name": "static_title_columns",
+      "kind": "GroupingOrMeasure"
+    },
+    {
+      "displayName": "Dynamic header titles",
+      "name": "dynamic_header_titles",
+      "kind": "Measure"
+    },
+    {
+      "displayName": "Dynamic title columns",
+      "name": "dynamic_title_columns",
+      "kind": "GroupingOrMeasure"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "table": {
+        "rows": {
+          "select": [
+            {
+              "for": {
+                "in": "static_title_columns"
+              }
+            },
+            {
+              "for": {
+                "in": "dynamic_header_titles"
+              }
+            },
+            {
+              "for": {
+                "in": "dynamic_title_columns"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
