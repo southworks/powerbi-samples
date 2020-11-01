@@ -6,8 +6,10 @@ This repository conntains working samples that demonstrates the use of Power BI 
 └─── {root}
    │── README.md
    └── samples
-          |
-          └ sample-tennis-report
+          |── power-bi-embedded
+          |── styling-custom-visual
+          |── dynamic-headers
+          └── sample-tennis-report
 ```
 
 ## Getting the samples
@@ -19,6 +21,9 @@ To use the samples, clone this GitHub repository using Git.
 ## Samples
 | Sample | Features Shown |
 | - | - |
+|[Power BI Embedded](samples/power-bi-embedded) | Data Modelling, Data Visualization, Customs Visuals, Data generation
+|[Styling Custom Visual](samples/styling-custom-visual) | Data Modelling, Data Visualization, Customs Visuals, Data generation
+|[Dynamic Headers](samples/dynamic-headers) | Data Modelling, Data Visualization, Customs Visuals, Data generation
 |[Sample Tennis Report](samples/sample-tennis-report) | Data Modelling, Data Visualization, Customs Visuals, Data generation
 
 ## Contributing
