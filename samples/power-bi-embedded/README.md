@@ -37,14 +37,63 @@ Once we finish completing our development and feel ready to move to production, 
 >For development testing this is not needed, as we can work with the [available free embed tokens](https://docs.microsoft.com/en-us/rest/api/power-bi/availablefeatures/getavailablefeatures).
 
 # How to run this application
+1. Have a Power BI workspace with reports in it. If you don't have any pbix file, you can try out [one of the samples Microsoft provides](https://docs.microsoft.com/en-us/power-bi/create-reports/sample-datasets#sales--returns-sample-pbix-file).
 
-1. Have a workspace with reports on it. If you don't have any pbix file, you can try out [one of the samples Microsoft provides](https://docs.microsoft.com/en-us/power-bi/create-reports/sample-datasets#sales--returns-sample-pbix-file).
-2. [Register an Azure AD application](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal#step-1---create-an-azure-ad-app) and create an app secret. In order to delegate Identity and Access Management functions to Azure AD, an application must be registered with an Azure AD tenant. In this step we can also specify where the access token is sent to, by setting the *redirect URI*. Once we register the Azure AD application, **a service principal is created** automatically.
-3. [Add sign-in with Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp#option-2-register-and-manually-configure-your-application-and-code-sample). In our case, we'll be using the same app registration for authentication. Go the registered Azure AD app and under *Manage* click on *Authentication*. Under *Redirect URIs*, select *Add URI*, and then enter https://localhost:44386/signin-oidc. Under *Implicit grant*, select *ID tokens* and *Access token*.
-4. [Create an Azure AD security group](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal#step-2---create-an-azure-ad-security-group) and add the service principal from the Azure AD app to that security group. 
-5. [Enable the Power BI service admin settings](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal#step-3---enable-the-power-bi-service-admin-settings). A Power BI admin needs to *Allow service principals to user Power BI APIs* in the *Power BI Admin portal* and enter the security group created before.
-6. [Add the service principal to your workspace](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal#step-4---add-the-service-principal-to-your-workspace) to be member or admin. This will allow our application to access our workspace content.
-7. Using the Azure AD application credentials, complete the values on the *app.settings* file of this sample application:
+2. Register an Azure AD application:
+
+   - Sign in to the [Azure portal](https://portal.azure.com/).
+   - If you have access to multiple tenants, use the *Directory + subscription filter*  in the top menu to select the tenant in which you want to register an application.
+   - Search for and select **Azure Active Directory**.
+   - Under Manage, select **App registrations**, then **New registration**.
+   - Enter a Name for your application.
+   - Select **Register**.
+   
+   Once you register the Azure AD application, **a service principal is created** automatically. This [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) allows Azure AD to authenticate your app.
+   
+   - After registering, the **Application ID** is available from the Overview tab. Copy and save it for later use.
+   - Click the **Certificates & secrets** tab.
+   - Under **Cliente secrets** click **New client secret**.
+   - In the **Add a client secret** window, enter a description, specify when you want the client secret to expire, and click **Add**.
+   - Copy and save the Client secret value.
+   
+     > After you leave this window, the client secret value will be hidden, and you'll not be able to view it or copy it again.
+   
+3. Add a platform:
+
+   In our case, we'll be using the same app registration for authentication:
+   
+   - Go to the registered Azure AD application.
+   - Under **Manage**, select **Authentication** and then on **Platform configurations** select **Add a platform** and then **Web**.
+   - Under **Redirect URIs**, select **Add URI**, and then enter https://localhost:44321/signin-oidc
+   - Under **Implicit grant**, select **ID tokens** and **Access token**.
+   - Select **Save**.
+   
+4. Create an Azure AD Security Group:
+
+   You need to be signed in with a Global administration account on Azure Portal.
+   - Search for and select **Azure Active Directory**.
+   - On the **Active Directory** page, select **Groups** and then select **New group**.
+   - The New Group pane will appear and you must fill out the required information.
+   - Select a pre-defined **Group type**.
+   - Create and add a **Group name**.
+   - Add a **Group email address** for the group, or keep the email address that is filled in automatically.
+   - **Group description**. Add an optional description to your group.
+   - Select a pre-defined **Membership type (required)**.
+   - Select **Create**. Your group is created and ready for you to add members.
+   
+5. Enable the Power BI service admin settings:
+
+   - To allow our Azure AD app to access our Power BI content and APIs, a Power BI admin needs to enable *Service Principal access* in the **Power BI admin portal**.
+   - Enter the created Security Group in the *Apply to specific security groups (Recommended)* section in **Developer settings**.
+   
+6. Add the service principal to your workspace:
+
+   - Scroll to the workspace you want to enable access for and select **Workspace access**.
+   - Add the Service Principal as an **Admin** or **Member**.
+   
+7. Open the solution of this sample application on Visual Studio and complete the configurations on the *appsettings.json* file:
+
+   > You can get the **Workspace Id** from the workspace URL: app.powerbi.com/groups/**<workspace_id>**/… The rest of the settings should be filled using the Azure AD application credentials.
 
 ```json
 {
@@ -67,7 +116,9 @@ Once we finish completing our development and feel ready to move to production, 
 }
 ```
 
-Review some [Considerations and limitations](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal#considerations-and-limitations) about embeding Power BI content with service principal. 
+7. Once you have finished completing the *app.settings* you can go ahead and run the application.
+
+For more information about these steps you can refer to the [Embed Power BI content with service principal and an application secret](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal) tutorial.
 
 # Sample application
 
