@@ -407,7 +407,7 @@ function _handleHyperlinkEvent(event, container) {
     var url = event.detail.url;
     var match = url.match(regex);
     // match = [ <url>, <groudId>, <reportId>, <pageId | optional>, <filters | optional> ]
-    if (match.length > 1 && match[1] && match[2]) {
+    if (match != null && match.length > 1 && match[1] && match[2]) {
         var reportId = match[2];
         var pageId = match[3] ? match[3] : null;
         var queryString = match[4] ? match[4] : null;
@@ -415,6 +415,11 @@ function _handleHyperlinkEvent(event, container) {
         var filters = _parseFiltersFromQueryString(queryString);
 
         loadReport(container.id, reportId, pageId, filters);
+
+        $("a.item-page").removeClass("active");
+    }
+    else {
+        log.error("Error while parsing the link url. Verify that the workspace, report and page id are correct.")
     }
 }
 

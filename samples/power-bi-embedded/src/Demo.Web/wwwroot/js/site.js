@@ -25,4 +25,9 @@ $(document).ready(function () {
         preserveFilters(preserve);
         e.stopPropagation();
     });
+
+    $("a.item-page").on("click", function (event) {
+        $("a.item-page").removeClass("active");
+        $(this).addClass("active");
+    });
 });
