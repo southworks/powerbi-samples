@@ -343,7 +343,6 @@ As can be seen, every time a report is embedded, an instance of that content ite
 - [Register functions for specific events](https://github.com/microsoft/PowerBI-JavaScript/wiki/Handling-Events)
 - and [more](https://github.com/microsoft/PowerBI-JavaScript/wiki)
 
-
 As long as the *embed token* is valid we can keep interacting with the reports, but it's necessary to renew the embed token before it expires. The **setTokenExpirationListener()** function calculates when the token should be renewed and then, when that period has ended, the **updateEmbedToken()** is triggered:
 
 ```js
@@ -364,4 +363,134 @@ The **updateEmbedToken()** function requests a new embed token to our server and
  * @param {HTMLElement} container   Element that contains the report embedded.
  */
 function _updateEmbedToken(reportId, container) {...}
+```
+
+## Handling the hyperlink events
+
+If you followed our article on Medium - [Linking reports on Power BI Embedded](https://medium.com/@hernan.demczuk/c8509b8540f1) - you already know that we can make use of Power BI Javascript SDK to manipulate what happens after the user clicks on visualization's hyperlinks too. To be able to filter a report based on an URL and also update the slicers on the target report, we must add the *hyperlinkClickBehavior* setting in our embed configuration. There are 3 types of options to do this:
+
+- **Navigate**: Clicked URL is loaded in a new browsing context.
+- **NavigateAndRaiseEvent**: Clicked URL is loaded in a new browsing context, raising the *dataHyperlinkClicked* event.
+- **RaiseEvent**: Prevents the default behavior, raising the *dataHyperlinkClicked* event.
+
+We will use the **RaiseEvent** option since we want to avoid opening a new tab:
+
+```js
+function _embedReport(embedData, container, pageId = null, filters = []) {
+    var models = window["powerbi-client"].models;
+
+    var config = {
+        type: "report",
+        tokenType: models.TokenType.Embed,
+        accessToken: embedData.embedToken,
+        embedUrl: embedData.embedUrl,
+        settings: {
+            background: models.BackgroundType.Transparent,
+            hyperlinkClickBehavior: models.HyperlinkClickBehavior.RaiseEvent,
+            filterPaneEnabled: false,
+            navContentPaneEnabled: false
+        }
+    };
+
+    if (pageId) {
+        config["pageName"] = pageId;
+    }
+    
+    ...
+}
+```
+
+Having that configuration in place, we implemente the logic that propagates the filters on the target report.
+
+First, we need a function that executes the following steps on each slicer available on the page:
+
+1- Retrieves the active page of the report.
+2- Gets slicers from the active page.
+3- Retrieves the state of each slicer.
+4- Updates the states using the filter objects, if any.
+5- [Optional] Keep the slicer states in a dictionary (variable) to propagate them on other reports - this feature can be seen on the right top section of the web application. 
+
+This logic will be located on a function that we'll call *_initializeSlicer()*.
+
+Then, we create a *_handleSlicerEvent()* function that processes each slicer state and saves it in a dictionary.
+
+Last, we implement a *_handleHyperlinkEvent()* function that parses URLs that target other reports. This URL contains information about:
+- Workspace ID
+- Report ID
+- Page ID
+- [Optional] Filters (Tables, columns, values, and operators)
+
+Each of the above functions will be triggered depending on the following events on the report:
+
+**loaded**: When the report is loaded, page slicers (if any) will be initialized (at visual level) with filters (if any).
+**dataSelected**: Any select event on a visual will be caught. In our case, we will only process events related to slicers.
+**dataHyperlinkClicked**: We will use this event to catch the hyperlink events that target other reports.
+
+```js
+function _embedReport(embedData, container, pageId = null, filters = []) {
+    ...
+
+    // Embed Power BI report when Access token and Embed URL are available
+    report = powerbi.embed(container, config);
+
+    report.off("loaded");
+    report.on("loaded", function () {
+        log.debug("Report load successful");
+
+        var filterObjects = filters.map(filter => _generateFilterObject(filter.table, filter.column, filter.values));
+
+        _initializeSlicers(filterObjects);
+
+        _setTokenExpirationListener(embedData.expiresOn, embedData.safetyIntervalInMinutes, embedData.reportId, container);
+    });
+
+    report.off("dataSelected");
+    report.on("dataSelected", function (event) {
+        if (event.detail.visual.type == "slicer") {
+            _handleSlicerEvent(event.detail);
+        }
+    });
+
+    report.off("dataHyperlinkClicked");
+    report.on("dataHyperlinkClicked", function (event) {
+        _handleHyperlinkEvent(event, container);
+    });
+
+    report.off("error");
+    report.on("error", function (event) {
+        log.error(event.detail.message);
+    });
+}
+```
+
+Below we can see the implementation details of the *_handleHyperlinkEvent()* function, that gets the filters passed along with the URL and loads the target report updating any necessary slicer on its way:
+
+```js
+function _handleHyperlinkEvent(event, container) {
+    if (!event || !event.detail || !event.detail.url)
+        return;
+
+    // example https://app.powerbi.com/groups/<groudId>/reports/<reportId>/<pageId>?filter=Employee/City eq 'Snohomish'
+    var regex = /https\:\/\/app\.powerbi\.com\/groups\/([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\/reports\/([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\/([A-za-z0-9]*)?(\?filter=.*)?/;
+    var url = event.detail.url;
+    var match = url.match(regex);
+    // match = [ <url>, <groudId>, <reportId>, <pageId | optional>, <filters | optional> ]
+    if (match.length > 1 && match[1] && match[2]) {
+        var reportId = match[2];
+        var pageId = match[3] ? match[3] : null;
+        var queryString = match[4] ? match[4] : null;
+
+        var filters = _parseFiltersFromQueryString(queryString);
+
+        loadReport(container.id, reportId, pageId, filters);
+    }
+}
+
+function _parseFiltersFromQueryString(queryString) {
+    var filters = [];
+  
+    // code to parse query string -> [ { table: <tableName>, column: <columnName>, values: <valueArray> }, ... ]
+  
+    return filters;
+}
 ```
