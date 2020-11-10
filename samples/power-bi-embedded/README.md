@@ -1,4 +1,4 @@
-Summary
+Power BI Embedded Sample
 ====================
 This sample project demonstrates how to share Power BI content in an ASP.NET Core MVC application with authenticated users that don't have Power BI accounts. To accomplish this, we will use [Power BI Embedded](https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding#:~:text=Power%20BI%20Embedded%20is%20a,%2Dbased%2C%20hourly%20metered%20model.), along with [Power BI .NET SDK](https://github.com/microsoft/PowerBI-CSharp), [Power BI JavaScript API](https://github.com/microsoft/PowerBI-JavaScript) and [Azure AD Sign In](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp).
 
@@ -132,11 +132,11 @@ Embedding Power BI content within our application requires getting an **access t
 
 ## How this sample works
 
-All the necessary configurations that the application consumes in order to authenticate users and embed Power BI reports are located on the *app.settings*:
+All the necessary configurations that the application consumes in order to authenticate users and embed Power BI reports are located on the *app.settings* on the sample web app:
 
 * **AzureADSignIn**: Configurations for the single sign-on.
 
-* **AzureADPowerBI**: Configurations to generate the AzureAD access token.
+* **AzureADPowerBI**: Configurations of the service principal to connect to the Power BI REST APIs.
 
 * **PowerBI**: Contains the workspace ID where the reports are hosted and settings for generating the embed tokens. *"TokenForMultipleReports": true* enforce a single token for every report and *"SafetyIntervalInMinutes": 5* generates a new token 5 minutes before it expires.
 
