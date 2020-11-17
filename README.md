@@ -1,5 +1,5 @@
 # Power BI Samples
-This repository conntains working samples that demonstrates the use of Power BI to build reports and the use of advanced features.
+This repository contains working samples that demonstrates the use of Power BI to build reports and the use of advanced features.
 
 ## Directory structure
 ```bash
