@@ -132,9 +132,9 @@ Embedding Power BI content within our application requires getting an **access t
 
 ## How this sample works
 
-All the necessary configurations that the application consumes in order to authenticate users and embed Power BI reports are located on the *app.settings* on the sample web app:
+All the necessary configurations that the application consumes in order to authenticate users and embed Power BI reports are located on the *app.settings*:
 
-* **AzureADSignIn**: Configurations for the single sign-on.
+* **AzureADSignIn**: Configurations for the single sign-on on the sample web-app.
 
 * **AzureADPowerBI**: Configurations of the service principal to connect to the Power BI REST APIs.
 
