@@ -3,7 +3,7 @@ This custom visual was created to enhance the user experience when selecting pla
 
 ## Considerations
  - The filter will only be applied when the number of elements selected is greater or equal than the minimum defined (default: 1)
- - The user won't be able to select more elements than the maximum defined (default: 2)
+ - The user will not be able to select more elements than the maximum defined (default: 2)
 
 ## Development setup
 To update or debug the custom visual, refer to the [custom visuals documentation](../README.md) and follow the instructions to set up the development environment.

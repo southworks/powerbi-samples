@@ -5,7 +5,7 @@ Elo is a rating system originally created for chess but now widely used for many
 - The matches that the player has already played
 - The opponent's Elo rating. This means that the rating will also depend on the strength of the opponent.
 
-You can find more information in the following links:
+More information can be found in the following links:
 - [An introduction to tennis Elo](http://www.tennisabstract.com/blog/2019/12/03/an-introduction-to-tennis-elo/)
 - [Tennis Elo modelling](https://www.betfair.com.au/hub/tennis-elo-modelling/)
 - [Analysis of Elo ratings to compare historical players](https://fivethirtyeight.com/features/serena-williams-and-the-difference-between-all-time-great-and-greatest-of-all-time/#fn-2)
