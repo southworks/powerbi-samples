@@ -7,7 +7,8 @@ This repository conntains working samples that demonstrates the use of Power BI 
    │── README.md
    └── samples
           |
-          └ sample-tennis-report
+          └── dynamic-headers
+          └── sample-tennis-report
 ```
 
 ## Getting the samples
@@ -16,13 +17,14 @@ To use the samples, clone this GitHub repository using Git.
     git clone https://github.com/southworks/powerbi-samples.git
     cd powerbi-samples
 ```
+
 ## Samples
 | Sample | Features Shown |
 | - | - |
-|[Sample Tennis Report](samples/sample-tennis-report) | Data Modelling, Data Visualization, Customs Visuals, Data generation
+|[Dynamic Headers](samples/dynamic-headers) | Custom visuals
+|[Sample Tennis Report](samples/sample-tennis-report) | Data modelling, Data visualization, Customs visuals, Data generation
 
 ## Contributing
-
 Contributions are welcomed!
 
 - [Contribution guidelines](CONTRIBUTING.md)
