@@ -7,7 +7,8 @@ This repository conntains working samples that demonstrates the use of Power BI 
    │── README.md
    └── samples
           |
-          └ sample-tennis-report
+          └── power-bi-embedded
+          └── sample-tennis-report
 ```
 
 ## Getting the samples
@@ -16,13 +17,14 @@ To use the samples, clone this GitHub repository using Git.
     git clone https://github.com/southworks/powerbi-samples.git
     cd powerbi-samples
 ```
+
 ## Samples
 | Sample | Features Shown |
 | - | - |
-|[Sample Tennis Report](samples/sample-tennis-report) | Data Modelling, Data Visualization, Customs Visuals, Data generation
+|[Power BI Embedded](samples/power-bi-embedded) | Reports publishing, Drill through, Dynamic filtering
+|[Sample Tennis Report](samples/sample-tennis-report) | Data modelling, Data visualization, Customs visuals, Data generation
 
 ## Contributing
-
 Contributions are welcomed!
 
 - [Contribution guidelines](CONTRIBUTING.md)
