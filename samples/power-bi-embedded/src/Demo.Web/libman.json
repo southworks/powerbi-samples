@@ -1,0 +1,73 @@
+﻿{
+    "version": "1.0",
+    "defaultProvider": "cdnjs",
+    "libraries": [
+        {
+            "library": "jquery@3.3.1",
+            "files": [
+                "jquery.min.js",
+                "jquery.js",
+                "jquery.min.map"
+            ],
+            "destination": "wwwroot/lib/jquery/dist/"
+        },
+        {
+            "library": "jquery-validate@1.17.0",
+            "files": [
+                "additional-methods.js",
+                "additional-methods.min.js",
+                "jquery.validate.js",
+                "jquery.validate.min.js"
+            ],
+            "destination": "wwwroot/lib/jquery-validation/dist/"
+        },
+        {
+            "library": "jquery-validation-unobtrusive@3.2.11",
+            "files": [
+                "jquery.validate.unobtrusive.js",
+                "jquery.validate.unobtrusive.min.js"
+            ],
+            "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+        },
+        {
+            "library": "twitter-bootstrap@4.1.3",
+            "destination": "wwwroot/lib/bootstrap/dist/"
+        },
+        {
+            "library": "loglevel@1.6.8",
+            "files": [
+                "loglevel.min.js"
+            ],
+            "destination": "wwwroot/lib/loglevel/"
+        },
+        {
+            "library": "toastr.js@2.1.3",
+            "files": [
+                "toastr.min.js",
+                "toastr.js.map",
+                "toastr.min.css"
+            ],
+            "destination": "wwwroot/lib/toastr/"
+        },
+        {
+            "library": "font-awesome@4.7.0",
+            "files": [
+                "css/font-awesome.min.css",
+                "fonts/fontawesome-webfont.eot",
+                "fonts/fontawesome-webfont.ttf",
+                "fonts/fontawesome-webfont.woff",
+                "fonts/fontawesome-webfont.woff2"
+            ],
+            "destination": "wwwroot/lib/font-awesome/"
+        },
+        {
+            "library": "powerbi-client@2.14.1",
+            "files": [
+                "powerbi.min.js",
+                "powerbi.js",
+                "powerbi.js.map"
+            ],
+            "destination": "wwwroot/lib/powerbi/dist/"
+        }
+    ]
+}

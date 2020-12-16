@@ -1,0 +1,261 @@
+﻿* {
+    font-family: "Segoe UI";
+}
+
+iframe {
+    border: none;
+}
+
+#wrapper {
+    overflow-x: hidden;
+}
+
+.navbar {
+    padding: 0.7rem 1rem;
+}
+
+#sidebar-wrapper {
+    width: 241px;
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+    background: #003973; 
+    color: #FFF;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.7rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .sidebar-heading img {
+    width: 40px;
+}
+
+#sidebar-wrapper .sidebar-heading span {
+    vertical-align: middle; 
+    font-weight: bold;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+.list-group-item.list-group-item-action span {
+    padding: 0 5px;
+    vertical-align: middle;
+}
+
+a.list-group-item.list-group-item-action {
+    font-weight: 600;
+    background: #003062;
+    color: #FFF;
+}
+
+.page-container .item-page {
+    padding-left: 30px;
+    background-color: #5a799a !important;
+}
+
+.page-container .item-page:hover, .page-container .item-page.active {
+    background-color: #3e6286 !important;
+    border: 1px solid rgba(0,0,0,.125) !important;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 40px;
+}
+
+/** new styles */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+main {
+    position: relative;
+    top: 57px;
+}
+
+.content {
+    display: flex;
+    padding-top: 10px;
+    height: calc(100vh - 70px);
+}
+
+.sidenav-container {
+    min-width: 180px;
+    background-color: #dddddda8;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.main-content {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.tree {
+    font-size: .875rem;
+}
+
+.tree ul, ul.tree {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.tree-expander {
+    color: gray;
+    font-weight: 400;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tree-expander:hover {
+    text-decoration: none;
+}
+
+.tree-group {
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.tree-group li {
+    display: flex;
+}
+
+.tree-group li a {
+    height: 24px;
+    align-items: center;
+    color: #0366d6 !important;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tree-group li a:hover {
+    color: #0056b3 !important;
+    text-decoration: underline !important;
+}
+
+@media (min-width: 576px) {
+    nav.navbar .sidenav {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidenav-container {
+        display: none;
+    }
+}
+
+a.bg-light:focus, a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
+    background-color: #e8ebec !important;
+}
+
+.section-right {
+    padding: 0;
+}
+
+li.preserve-filters-option a,
+li.preserve-filters-option a input,
+li.preserve-filters-option a label {
+    cursor: pointer;
+}
+
+li.preserve-filters-option a label {
+    width: 100%;
+}
