@@ -1,0 +1,41 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+
+# All files
+[*]
+indent_style = space
+
+# Xml files
+[*.xml]
+indent_size = 4
+
+###############################
+# StyleCop Conventions        #
+###############################
+# see https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2019
+
+[*.cs]
+
+# Documentation category
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.DocumentationRules.severity = none
+
+# SA0001: XML comment analysis disabled
+dotnet_diagnostic.SA0001.severity = none
+
+# SA1200: Using directive should appear within a namespace declaration disabled
+dotnet_diagnostic.SA1200.severity = none
+
+# SA1201: A constructor should not follow a property
+dotnet_diagnostic.SA1201.severity = none
+
+# SA1413: Use trailing comma in multi-line initializers
+# saw https://github.com/DotNetAnalyzers/StyleCopAnalyzers/issues/2238 and decided :)
+dotnet_diagnostic.SA1413.severity = none
+
+# IDE0060: Remove unused parameter
+dotnet_code_quality_unused_parameters = all:none
+
+# IDE0003: Remove qualification
+dotnet_style_qualification_for_field = false:none
+dotnet_style_qualification_for_method = false:none
+dotnet_style_qualification_for_property = false:none
+dotnet_style_qualification_for_event = false:none
