@@ -85,9 +85,10 @@ export class Visual implements IVisual {
             return;
         }
         
-        if(this.settings.dataTable.headerBackgroundColor === null){
+        if (this.settings.dataTable.headerBackgroundColor === null) {
             this.settings.dataTable.headerBackgroundColor = this.getTopColorFromPalette()
         }
+
         /** If we get this far, we can trust that we can work with the data! */
         let table = this.dataViews[0].table;
 
@@ -110,9 +111,6 @@ export class Visual implements IVisual {
         });
     }
 
-    private static parseSettings(dataView: DataView): VisualSettings {
-        return <VisualSettings>VisualSettings.parse(dataView);
-    }
     /**
      * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the
      * objects and properties you want to expose to the users in the property pane.
@@ -127,12 +125,17 @@ export class Visual implements IVisual {
         );
     }
 
+    private static parseSettings(dataView: DataView): VisualSettings {
+        return <VisualSettings>VisualSettings.parse(dataView);
+    }
+
     private modifyStyleSheet(document: Document, settings: VisualSettings) {
         let sheet = document.createElement('style');
         sheet.innerHTML = `.tabulator .tabulator-header { border-bottom: ${settings.dataTable.borderBottomWidth} ${settings.dataTable.borderBottomStyle} ${settings.dataTable.borderBottomColor};}`;
         document.body.appendChild(sheet);
     }
-    private getTopColorFromPalette(): string{
+
+    private getTopColorFromPalette(): string {
         return this.colorPalette.getColor('1').value
     }
 }
