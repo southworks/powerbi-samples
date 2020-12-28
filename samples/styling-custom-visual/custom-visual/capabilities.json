@@ -1,0 +1,115 @@
+{
+    "dataRoles": [
+        {
+            "name": "values",
+            "kind": "GroupingOrMeasure",
+            "displayName": "Values"
+        }
+    ],
+    "objects": {
+        "dataTable": {
+            "displayName": "Table",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "rowBackgroundColor": {
+                    "displayName": "Row Background color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "headerBackgroundColor": {
+                    "displayName": "Header Background Color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "borderBottomStyle": {
+                    "displayName": "Border Bottom Style",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "dotted",
+                                "displayName": "Dotted"
+                            },
+                            {
+                                "value": "dashed",
+                                "displayName": "Dashed"
+                            },
+                            {
+                                "value": "solid",
+                                "displayName": "Solid"
+                            },
+                            {
+                                "value": "double",
+                                "displayName": "Double"
+                            },
+                            {
+                                "value": "inset",
+                                "displayName": "Inset"
+                            },
+                            {
+                                "value": "outset",
+                                "displayName": "Outset"
+                            }
+                        ]
+                    }
+                },
+                "borderBottomColor": {
+                    "displayName": "Border Bottom Color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "borderBottomWidth": {
+                    "displayName": "Border Bottom Width",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "medium",
+                                "displayName": "Medium"
+                            },
+                            {
+                                "value": "thin",
+                                "displayName": "Thin"
+                            },
+                            {
+                                "value": "thick",
+                                "displayName": "Thick"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "for": {
+                        "in": "values"
+                    }
+                }
+            }
+        }
+    ]
+}
