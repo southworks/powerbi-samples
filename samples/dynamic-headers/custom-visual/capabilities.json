@@ -1,0 +1,46 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Static column values",
+      "name": "static_column_values",
+      "kind": "GroupingOrMeasure"
+    },
+    {
+      "displayName": "Dynamic column headers",
+      "name": "dynamic_column_headers",
+      "kind": "Measure"
+    },
+    {
+      "displayName": "Dynamic column values",
+      "name": "dynamic_column_values",
+      "kind": "GroupingOrMeasure"
+    }
+  ],
+  "objects": {
+  },
+  "dataViewMappings": [
+    {
+      "table": {
+        "rows": {
+          "select": [
+            {
+              "for": {
+                "in": "static_column_values"
+              }
+            },
+            {
+              "for": {
+                "in": "dynamic_column_headers"
+              }
+            },
+            {
+              "for": {
+                "in": "dynamic_column_values"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

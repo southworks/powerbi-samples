@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "author": {"name":"Southworks","email":"southworks@southworks.com"},
+    "resources": [
+        {
+            "resourceId": "rId0",
+            "sourceType": 5,
+            "file": "resources/dynamicHeaders.pbiviz.json"
+        }
+    ],
+    "visual": {"name":"dynamic-headers","displayName":"Dynamic Headers","guid":"dynamicHeaders","visualClassName":"Visual","version":"1.0.0","description":"Dynamic Header for Columns","supportUrl":"support@support.com","gitHubUrl":""},
+    "metadata": {
+        "pbivizjson": {
+            "resourceId": "rId0"
+        }
+    }  
+}
