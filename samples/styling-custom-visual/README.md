@@ -15,6 +15,10 @@ This sample shows how to style a custom visual from the Formatting pane, Power B
      │── custom-visual
      │    │── assets
      │    │    └─── icon.png 
+     │    │ 
+     │    │── dist
+     │    │    └─── stylingCustomVisual.1.0.0.pbiviz
+     │    │    └─── package.json
      │    │
      │    │── src
      │    │    │─── settings.ts  
