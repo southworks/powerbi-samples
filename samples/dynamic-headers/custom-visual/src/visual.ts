@@ -39,7 +39,7 @@ export class Visual implements IVisual {
         var tableRows = options.dataViews[0].table.rows;
 
         // Rewrite columns index based on their order
-        tableColumns.forEach( (tableColumn, index) =>  tableColumn.index = index );
+        tableColumns.forEach((tableColumn, index) =>  tableColumn.index = index);
         
         // Get all different data roles
         var staticColumnValues = tableColumns
@@ -76,13 +76,13 @@ export class Visual implements IVisual {
 
         // Validate common issues
         // Different number of fields dragged into the header and values roles
-        if(dynamicColumnValues.length != dynamicColumnHeaders.length){
+        if (dynamicColumnValues.length != dynamicColumnHeaders.length) {
             this.error_message_html.innerHTML = "The number of Dynamic Header fields should be the same to the Dynamic Values fields";
             this.dynamic_table_html.style.display = "none";
             this.error_message_html.style.display = "block";
             return;
         }
-        else{
+        else {
             this.error_message_html.innerHTML = "";
             this.dynamic_table_html.style.display = "block";
             this.error_message_html.style.display = "none"; 
@@ -90,7 +90,7 @@ export class Visual implements IVisual {
 
         // Change title to dynamic title columns
         dynamicColumnValues = dynamicColumnValues
-            .map( dynamicColumnValue => {
+            .map(dynamicColumnValue => {
                 let relateddynamicColumnHeader = dynamicColumnHeaders
                     .find( dynamicColumnHeader => dynamicColumnValue.roleIndex == dynamicColumnHeader.roleIndex );
 
