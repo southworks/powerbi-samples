@@ -88,7 +88,7 @@ export class Visual implements IVisual {
             this.error_message_html.style.display = "none"; 
         }
 
-        // Change title to dynamic title columns
+        // Change header of dynamic column values
         dynamicColumnValues = dynamicColumnValues
             .map(dynamicColumnValue => {
                 let relateddynamicColumnHeader = dynamicColumnHeaders

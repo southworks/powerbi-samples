@@ -93,25 +93,25 @@ In the *Visualizations Pane* select *Get More Visuals*. Browse to the */dist* fo
 ### capabilities.ts
 
 #### Data roles
-- Static title columns: Defines the columns that have a static title, just like a regular table.
-- Dynamic title columns: Defines the table columns which their header title must be dynamic. Each dynamic title column must have a corresponding dynamic header title.
-- Dynamic header titles: Defines measures that work as the title of the dynamic title columns.
+- Static column values: Defines the columns that have a static title, just like a regular table.
+- Dynamic column values: Defines the table columns which their header title must be dynamic. Each dynamic column value must have a corresponding dynamic column header.
+- Dynamic column headers: Defines fields/measures that work as the title of the dynamic title columns.
  
  ```json
    "dataRoles": [
     {
-      "displayName": "Static title columns",
-      "name": "static_title_columns",
+      "displayName": "Static column values",
+      "name": "static_column_values",
       "kind": "GroupingOrMeasure"
     },
     {
-      "displayName": "Dynamic header titles",
-      "name": "dynamic_header_titles",
+      "displayName": "Dynamic column headers",
+      "name": "dynamic_column_headers",
       "kind": "Measure"
     },
     {
-      "displayName": "Dynamic title columns",
-      "name": "dynamic_title_columns",
+      "displayName": "Dynamic column values",
+      "name": "dynamic_column_values",
       "kind": "GroupingOrMeasure"
     }
   ]
@@ -128,17 +128,17 @@ The type of data mapping chosen for this visual is _table_:
           "select": [
             {
               "for": {
-                "in": "static_title_columns"
+                "in": "static_column_values"
               }
             },
             {
               "for": {
-                "in": "dynamic_header_titles"
+                "in": "dynamic_column_headers"
               }
             },
             {
               "for": {
-                "in": "dynamic_title_columns"
+                "in": "dynamic_column_values"
               }
             }
           ]
@@ -176,96 +176,95 @@ export class Visual implements IVisual {
 }
 ```
 
-The *update()* method is where the heart of our logic is written. The first step is to retrieve and format the input data received from the columns. It is important to make a distinction between the static and dynamic title columns data roles:
+The *update()* method is where the heart of our logic is written. The first step is to retrieve and format the input data received from the columns. It is important to make a distinction between the static and dynamic column data roles:
 
 ```ts
   public update(options: VisualUpdateOptions) {
-    var tableColumns = options.dataViews[0].table.columns;
+    var tableColumns = options.dataViews[0].table.columns;        
     var tableRows = options.dataViews[0].table.rows;
 
     // Rewrite columns index based on their order
-    tableColumns.forEach((tableColumn, index) => (tableColumn.index = index));
-
+    tableColumns.forEach((tableColumn, index) =>  tableColumn.index = index);
+    
     // Get all different data roles
-    var staticTitleColumns = tableColumns
-      .filter(
-        (staticTitleColumn) =>
-          staticTitleColumn.roles.static_title_columns == true
-      )
-      .map((staticTitleColumn) => {
-        return {
-          index: staticTitleColumn.index,
-          roleIndex: staticTitleColumn["rolesIndex"].static_title_columns[0],
-          displayName: staticTitleColumn.displayName,
-        };
-      })
-      .sort((a, b) => a.roleIndex - b.roleIndex);
+    var staticColumnValues = tableColumns
+        .filter(staticColumnValue => staticColumnValue.roles.static_column_values == true)
+        .map(staticColumnValue => {
+            return { 
+                index: staticColumnValue.index,
+                roleIndex: staticColumnValue['rolesIndex'].static_column_values[0], 
+                displayName: staticColumnValue.displayName
+            }
+        })
+        .sort((a, b) => a.roleIndex - b.roleIndex);
+    
+    var dynamicColumnValues = tableColumns
+        .filter(dynamicColumnValue => dynamicColumnValue.roles.dynamic_column_values == true)
+        .map(dynamicColumnValue => {  
+            return {
+                index: dynamicColumnValue.index,
+                roleIndex: dynamicColumnValue['rolesIndex'].dynamic_column_values[0], 
+                displayName: dynamicColumnValue.displayName
+            } 
+        })
+        .sort((a, b) => a.roleIndex - b.roleIndex);
 
-    var dynamicTitleColumns = tableColumns
-      .filter(
-        (dynamicTitleColumn) =>
-          dynamicTitleColumn.roles.dynamic_title_columns == true
-      )
-      .map((dynamicTitleColumn) => {
-        return {
-          index: dynamicTitleColumn.index,
-          roleIndex: dynamicTitleColumn["rolesIndex"].dynamic_title_columns[0],
-          displayName: dynamicTitleColumn.displayName,
-        };
-      })
-      .sort((a, b) => a.roleIndex - b.roleIndex);
+    var dynamicColumnHeaders = tableColumns
+        .filter(dynamicColumnHeader => dynamicColumnHeader.roles.dynamic_column_headers == true)
+        .map(dynamicColumnHeader => { 
+            return { 
+                index: dynamicColumnHeader.index,
+                roleIndex: dynamicColumnHeader['rolesIndex'].dynamic_column_headers[0],
+            } 
+        })
+        .sort((a, b) => a.roleIndex - b.roleIndex);
     
     ....
 ```
 
-In this part of the *update()* method, we check whether the **dynamic title columns** and **dynamic header titles** data roles have the same number of fields. If that's not the case, then an error message will be displayed. This is required because a **dynamic title column** must have a related **dynamic header title**, otherwise a column with no header title could be shown, which is wrong:
+In this part of the *update()* method, we check whether the **dynamic column values** and **dynamic column headers** data roles have the same number of fields. If that's not the case, then an error message will be displayed. This is required because a **dynamic column value** must have a related **dynamic column header**, otherwise a column with no header title could be shown, which is wrong:
 
 ```ts
-    if (dynamicTitleColumns.length != dynamicHeaderTitles.length) {
-      this.error_message_html.innerHTML =
-        "The number of Dynamic Header fields should be the same to the Dynamic Values fields";
-      this.dynamic_table_html.style.display = "none";
-      this.error_message_html.style.display = "block";
-      return;
-    } else {
-      this.error_message_html.innerHTML = "";
-      this.dynamic_table_html.style.display = "block";
-      this.error_message_html.style.display = "none";
+    if (dynamicColumnValues.length != dynamicColumnHeaders.length) {
+        this.error_message_html.innerHTML = "The number of Dynamic Header fields should be the same to the Dynamic Values fields";
+        this.dynamic_table_html.style.display = "none";
+        this.error_message_html.style.display = "block";
+        return;
+    }
+    else {
+        this.error_message_html.innerHTML = "";
+        this.dynamic_table_html.style.display = "block";
+        this.error_message_html.style.display = "none"; 
     }
 ```
 
-This is where the header title of the defined **dynamic title columns** is updated. Each of these columns get its title from the **dynamic header title** field that shares the same role index. The value of the titles is extracted from the input rows. Additionally, columns that contain a blank title are filtered out and, therefore, not displayed:
+This is where the header title of the defined **dynamic column value** is updated. Each of these columns gets its title from the **dynamic column header** field that shares the same role index. The value of the titles is extracted from the input rows. Additionally, columns that contain a blank title are filtered out and, therefore, not displayed:
 
 ```ts
-    // Change title to dynamic title columns
-    dynamicTitleColumns = dynamicTitleColumns
-      .map((dynamicTitleColumn) => {
-        let relatedDynamicHeaderTitle = dynamicHeaderTitles.find(
-          (dynamicHeaderTitle) =>
-            dynamicTitleColumn.roleIndex == dynamicHeaderTitle.roleIndex
-        );
+    // Change title of dynamic column values
+    dynamicColumnValues = dynamicColumnValues
+        .map(dynamicColumnValue => {
+            let relateddynamicColumnHeader = dynamicColumnHeaders
+                .find( dynamicColumnHeader => dynamicColumnValue.roleIndex == dynamicColumnHeader.roleIndex );
 
-        dynamicTitleColumn.displayName = tableRows[0]?.[relatedDynamicHeaderTitle.index] as string;
-        return dynamicTitleColumn;
-      })
-      .filter((dynamicTitleColumn) => dynamicTitleColumn.displayName);
+            dynamicColumnValue.displayName = tableRows[0]?.[relateddynamicColumnHeader.index] as string;
+            return dynamicColumnValue;
+        })
+        .filter(dynamicColumnValue => dynamicColumnValue.displayName);
 ```
 
 To make things easier, the table is created through the **Tabulator** library. For this reason, the columns need to be formatted according to the criteria that this third-party library requires:
 
 ``` ts
-    let mergedColumns = staticTitleColumns.concat(dynamicTitleColumns);
+    let mergedColumns = staticColumnValues.concat(dynamicColumnValues);
 
-    let formattedColumns = mergedColumns.map((column) => {
-      return { title: column.displayName, field: column.index.toString() };
-    });
+    let formattedColumns = mergedColumns.map(column => { return { title: column.displayName, field: column.index.toString() } });
 
-    // Create tabulator table
     new Tabulator("#dynamic-header-table", {
-      data: tableRows,
-      height: "100%",
-      layout: "fitColumns",
-      columns: formattedColumns,
+        data: tableRows,
+        height: "100%",
+        layout:"fitColumns",  
+        columns: formattedColumns
     });
 ```
 
