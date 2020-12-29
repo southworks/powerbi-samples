@@ -1,21 +1,23 @@
 {
   "dataRoles": [
     {
-      "displayName": "Static title columns",
-      "name": "static_title_columns",
+      "displayName": "Static column values",
+      "name": "static_column_values",
       "kind": "GroupingOrMeasure"
     },
     {
-      "displayName": "Dynamic header titles",
-      "name": "dynamic_header_titles",
+      "displayName": "Dynamic column headers",
+      "name": "dynamic_column_headers",
       "kind": "Measure"
     },
     {
-      "displayName": "Dynamic title columns",
-      "name": "dynamic_title_columns",
+      "displayName": "Dynamic column values",
+      "name": "dynamic_column_values",
       "kind": "GroupingOrMeasure"
     }
   ],
+  "objects": {
+  },
   "dataViewMappings": [
     {
       "table": {
@@ -23,17 +25,17 @@
           "select": [
             {
               "for": {
-                "in": "static_title_columns"
+                "in": "static_column_values"
               }
             },
             {
               "for": {
-                "in": "dynamic_header_titles"
+                "in": "dynamic_column_headers"
               }
             },
             {
               "for": {
-                "in": "dynamic_title_columns"
+                "in": "dynamic_column_values"
               }
             }
           ]

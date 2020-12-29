@@ -14,7 +14,7 @@ import Tabulator from 'tabulator-tables';
 import { VisualSettings } from "./settings";
 
 export class Visual implements IVisual {
-    private target: HTMLElement;
+    private target: HTMLElement; 
     private settings: VisualSettings;
     private dynamic_table_html: HTMLElement;
     private error_message_html: HTMLElement;
@@ -42,41 +42,41 @@ export class Visual implements IVisual {
         tableColumns.forEach( (tableColumn, index) =>  tableColumn.index = index );
         
         // Get all different data roles
-        var staticTitleColumns = tableColumns
-            .filter(staticTitleColumn => staticTitleColumn.roles.static_title_columns == true)
-            .map(staticTitleColumn => {
+        var staticColumnValues = tableColumns
+            .filter(staticColumnValue => staticColumnValue.roles.static_column_values == true)
+            .map(staticColumnValue => {
                 return { 
-                    index: staticTitleColumn.index,
-                    roleIndex: staticTitleColumn['rolesIndex'].static_title_columns[0], 
-                    displayName: staticTitleColumn.displayName
+                    index: staticColumnValue.index,
+                    roleIndex: staticColumnValue['rolesIndex'].static_column_values[0], 
+                    displayName: staticColumnValue.displayName
                 }
             })
             .sort((a, b) => a.roleIndex - b.roleIndex);
         
-        var dynamicTitleColumns = tableColumns
-            .filter(dynamicTitleColumn => dynamicTitleColumn.roles.dynamic_title_columns == true)
-            .map(dynamicTitleColumn => {  
+        var dynamicColumnValues = tableColumns
+            .filter(dynamicColumnValue => dynamicColumnValue.roles.dynamic_column_values == true)
+            .map(dynamicColumnValue => {  
                 return {
-                    index: dynamicTitleColumn.index,
-                    roleIndex: dynamicTitleColumn['rolesIndex'].dynamic_title_columns[0], 
-                    displayName: dynamicTitleColumn.displayName
+                    index: dynamicColumnValue.index,
+                    roleIndex: dynamicColumnValue['rolesIndex'].dynamic_column_values[0], 
+                    displayName: dynamicColumnValue.displayName
                 } 
             })
             .sort((a, b) => a.roleIndex - b.roleIndex);
 
-        var dynamicHeaderTitles = tableColumns
-            .filter(dynamicHeaderTitle => dynamicHeaderTitle.roles.dynamic_header_titles == true)
-            .map(dynamicHeaderTitle => { 
+        var dynamicColumnHeaders = tableColumns
+            .filter(dynamicColumnHeader => dynamicColumnHeader.roles.dynamic_column_headers == true)
+            .map(dynamicColumnHeader => { 
                 return { 
-                    index: dynamicHeaderTitle.index,
-                    roleIndex: dynamicHeaderTitle['rolesIndex'].dynamic_header_titles[0],
+                    index: dynamicColumnHeader.index,
+                    roleIndex: dynamicColumnHeader['rolesIndex'].dynamic_column_headers[0],
                 } 
             })
             .sort((a, b) => a.roleIndex - b.roleIndex);
 
         // Validate common issues
         // Different number of fields dragged into the header and values roles
-        if(dynamicTitleColumns.length != dynamicHeaderTitles.length){
+        if(dynamicColumnValues.length != dynamicColumnHeaders.length){
             this.error_message_html.innerHTML = "The number of Dynamic Header fields should be the same to the Dynamic Values fields";
             this.dynamic_table_html.style.display = "none";
             this.error_message_html.style.display = "block";
@@ -89,18 +89,18 @@ export class Visual implements IVisual {
         }
 
         // Change title to dynamic title columns
-        dynamicTitleColumns = dynamicTitleColumns
-            .map( (dynamicTitleColumn ) => {
-                let relatedDynamicHeaderTitle = dynamicHeaderTitles
-                    .find( dynamicHeaderTitle => dynamicTitleColumn.roleIndex == dynamicHeaderTitle.roleIndex );
+        dynamicColumnValues = dynamicColumnValues
+            .map( dynamicColumnValue => {
+                let relateddynamicColumnHeader = dynamicColumnHeaders
+                    .find( dynamicColumnHeader => dynamicColumnValue.roleIndex == dynamicColumnHeader.roleIndex );
 
-                dynamicTitleColumn.displayName = tableRows[0]?.[relatedDynamicHeaderTitle.index] as string;
-                return dynamicTitleColumn;
+                dynamicColumnValue.displayName = tableRows[0]?.[relateddynamicColumnHeader.index] as string;
+                return dynamicColumnValue;
             })
-            .filter(dynamicTitleColumn => dynamicTitleColumn.displayName);
+            .filter(dynamicColumnValue => dynamicColumnValue.displayName);
 
         // Merge static and dynamic title columns
-        let mergedColumns = staticTitleColumns.concat(dynamicTitleColumns);
+        let mergedColumns = staticColumnValues.concat(dynamicColumnValues);
 
         // Format table columns for tabulator
         let formattedColumns = mergedColumns.map(column => { return { title: column.displayName, field: column.index.toString() } });
@@ -112,7 +112,6 @@ export class Visual implements IVisual {
             layout:"fitColumns",  
             columns: formattedColumns
         });
-
     }
 
     private static parseSettings(dataView: DataView): VisualSettings {
@@ -120,8 +119,6 @@ export class Visual implements IVisual {
     }
 
     public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-
         return VisualSettings.enumerateObjectInstances( this.settings || VisualSettings.getDefault(), options );
-        
     }
 }
