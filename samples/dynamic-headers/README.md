@@ -15,6 +15,10 @@ This sample shows how to implement a custom table that features dynamic header n
      │── custom-visual
      │    │── assets
      │    │    └─── icon.png 
+     │    │ 
+     │    │── dist
+     │    │    └─── dynamicHeaders.1.0.0.pbiviz
+     │    │    └─── package.json
      │    │
      │    │── src
      │    │    │─── settings.ts  
