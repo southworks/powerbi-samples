@@ -1,5 +1,5 @@
 # Power BI Samples
-This repository conntains working samples that demonstrates the use of Power BI to build reports and the use of advanced features.
+This repository contains working samples that demonstrates the use of Power BI to build reports and the use of advanced features.
 
 ## Directory structure
 ```bash
@@ -8,6 +8,8 @@ This repository conntains working samples that demonstrates the use of Power BI 
    └── samples
           |
           └── dynamic-headers
+          └── power-bi-embedded
+          └── styling-custom-visual
           └── sample-tennis-report
 ```
 
@@ -22,6 +24,8 @@ To use the samples, clone this GitHub repository using Git.
 | Sample | Features Shown |
 | - | - |
 |[Dynamic Headers](samples/dynamic-headers) | Custom visuals
+|[Power BI Embedded](samples/power-bi-embedded) | Reports publishing, Drill through, Dynamic filtering
+|[Styling Custom Visual](samples/styling-custom-visual) | Custom visuals, Report theme
 |[Sample Tennis Report](samples/sample-tennis-report) | Data modelling, Data visualization, Customs visuals, Data generation
 
 ## Contributing

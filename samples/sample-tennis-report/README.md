@@ -1,6 +1,6 @@
 # Sample Power BI Report for Tennis Datasets
 
-This sample consists of a Power BI report that consumes a tennis dataset (e.g. players, torunaments and matches data) and provides visualizations to analyze players performance, rankings/ratings and to predict hypothetical matches.
+This sample consists of a Power BI report that consumes a tennis dataset (e.g. players, tournaments and matches data) and provides visualizations to analyze players performance, rankings/ratings and to predict hypothetical matches.
 
 ## Folder structure
 The repository contains the assets and tools used to create the Power BI report.
@@ -40,7 +40,7 @@ A set of custom visuals were created to extend the out-of-the-box visualization 
 For more details refer to the [custom visuals documentation](custom-visuals).
 
 ## Report themes
-Styling assets supported by Power BI used accross the report to provide a consistent look & feel. For more details, visit the [themes documentation](themes).
+Styling assets supported by Power BI used across the report to provide a consistent look & feel. For more details, visit the [themes documentation](themes).
 
 ## Data tools
 The following Python scripts can be used to generate extra data to enrich the tennis dataset of the Power BI report:

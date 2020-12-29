@@ -1,0 +1,70 @@
+﻿@inject Demo.Web.Configuration.ClientLoggingOptions ClientLoggingOptions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body style="margin-bottom:0">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/lib/powerbi/dist/powerbi.min.js"></script>
+    <script src="~/lib/loglevel/loglevel.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/custom-embed.js" asp-append-version="true"></script>
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <span style="">Demo</span>
+            </div>
+
+            @await Component.InvokeAsync("Navigation")
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <partial name="_Header" />
+
+            @RenderBody()
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        // Initialize logger with level from the appsettings.json
+        var level = '@ClientLoggingOptions.LogLevel';
+        log.setLevel(level);
+
+        // Set settings for toastr (alert)
+        toastr.options.positionClass = "toast-top-center";
+        toastr.options.closeButton = true;
+
+        $(document).ready(function () {
+            updateReportContainerHeight();
+            $(window).resize(updateReportContainerHeight);
+        });
+    </script>
+
+</body>
+</html>

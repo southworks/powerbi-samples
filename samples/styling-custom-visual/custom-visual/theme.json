@@ -1,0 +1,36 @@
+{
+    "name": "Custom Theme",
+    "dataColors": [
+        "#73B761",
+        "#4A588A",
+        "#ECC846",
+        "#CD4C46",
+        "#71AFE2",
+        "#8D6FD1",
+        "#EE9E64",
+        "#95DABB",
+        "#8FC581",
+        "#6E79A1",
+        "#F0D36B",
+        "#D7706B",
+        "#8DBFE8",
+        "#A48CDA"
+    ],
+    "background": "#FFFFFF",
+    "foreground": "#070f25",
+    "tableAccent": "#0F1934",
+    "visualStyles": {
+        "stylingCustomVisual": {
+            "*": {
+                "dataTable": [
+                    {
+                        "fontSize": 14,
+                        "rowBackgroundColor": {
+                            "solid": { "color": "#e6e6e6" }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
