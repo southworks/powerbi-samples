@@ -14,7 +14,7 @@ import Tabulator from 'tabulator-tables';
 import { VisualSettings } from "./settings";
 
 export class Visual implements IVisual {
-    private target: HTMLElement; 
+    private target: HTMLElement;
     private settings: VisualSettings;
     private dynamic_table_html: HTMLElement;
     private error_message_html: HTMLElement;
